@@ -12,12 +12,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "token.h"
-#include "testScanner.h"
+#include "parser.h"
 
 using namespace std;
 
+ifstream fileToRead; //get the data to be processed
+
+
 int main(int argc, const char * argv[]) {
-    ifstream fileToRead; //get the data to be processed
     ofstream fileToWrite;
     
     string fileName;
@@ -26,7 +28,7 @@ int main(int argc, const char * argv[]) {
     string data; //variable that will be used in the tree
     string word;
     
-    testScanner myTestScanner;
+    parser myParser;
   
     switch (argc)
     {
@@ -64,6 +66,8 @@ int main(int argc, const char * argv[]) {
 
   if (fileToRead.good()){
  //    myTestScanner.runTestScanner(fileToRead);
+      myParser.parse();
+            
  }
         fileToRead.close();
     

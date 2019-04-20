@@ -18,7 +18,7 @@
 
 using namespace std;
 
-const string reservedWords[11] = {"iter", "void", "var", "return", "scan", "print", "program", "cond", "then", "let", "int"};
+
 int delimiterIndex;
 int operatorIndex;
 

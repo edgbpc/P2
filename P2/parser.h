@@ -10,5 +10,45 @@
 #define parser_h
 
 #include <stdio.h>
+#include "token.h"
+
+extern ifstream fileToRead; 
+
+
+class parser {
+    
+public:
+    parser();
+    void parse();
+
+
+    
+private:
+    void program();
+    void block();
+    void vars();
+    void expr();
+    void A();
+    void N();
+    void M();
+    void R();
+    void stats();
+    void mStat();
+    void stat();
+    void IN();      //xcode say in as a keyword.  workaround by captalizing
+    void OUT();     //xcode say out as a keyword.  workaround by captalizing
+    void IF();      //xcode say if as a keyword.  workaround by captalizing
+    void loop();
+    void assign();
+    void RO();
+    void parseTokens(token_t token);
+    void tkScanner();
+    void Run();
+    void error(string expected);
+    void DEVMode();
+    
+    
+};
+
 
 #endif /* parser_h */

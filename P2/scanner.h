@@ -28,6 +28,6 @@ void processCharacter(int state);
 extern bool isTokenComplete;
 
 
-
+const string reservedWords[11] = {"iter", "void", "var", "return", "scan", "print", "program", "cond", "then", "let", "int"};
 
 #endif /* scanner_h */
