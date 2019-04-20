@@ -200,7 +200,9 @@ void parser::stat() {
         loop();
         return;
     }else if (receivedToken.tokenID == identifierToken) {
+        tkScanner();
         assign();
+        return;
     } else {
         error("stat() - scan, print, void, cond, or iter");
     }
@@ -255,6 +257,17 @@ void parser::loop() {
     
 }
 void parser::assign() {
+    if (receivedToken.tokenID == identifierToken){
+        tkScanner();
+        if (receivedToken.tokenInstance == "=") {
+            expr();
+            return;
+        } else {
+            error("assign() - =");
+        }
+    } else {
+        error("assign() - identifer");
+    }
     
 }
 void parser::RO() {
