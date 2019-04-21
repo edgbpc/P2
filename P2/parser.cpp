@@ -84,11 +84,13 @@ node* parser::vars() {
     if (receivedToken.tokenInstance == "var") {  //predict <vars> -> var Identifier : Integer <vars>
         tkScanner();
         if (receivedToken.tokenID == identifierToken) {
+            node->token1 = receivedToken;
             tkScanner();
             if (receivedToken.tokenInstance == ":") {
                 tkScanner();
                 if (receivedToken.tokenID == digitToken) {
-                    vars();
+                    node->token2 = receivedToken;
+                    node->child1 = vars();
                     return node;
                 } else {
                     error("digit");
@@ -249,6 +251,7 @@ node*  parser::stat() {
 node*  parser::IN() {
     node* node = getNode("In");
     if (receivedToken.tokenID == identifierToken) {
+        node->token1 = receivedToken;
         tkScanner();
     } else {
         error("IN() - identifier");
