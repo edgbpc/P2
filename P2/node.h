@@ -9,21 +9,23 @@
 
 
 
-#ifndef node_h
-#define node_h
+#ifndef NODE_H
+#define NODE_H
 
-#include <set>
+
 #include <string>
 #include <stdio.h>
+#include "token.h"
 
 
 using namespace std;
 
 struct node {
-    int key_value;
-    set<string> words;
-    node *left;
-    node *right;
+    string nodeLabel;
+    node *child1, *child2;
+    token_t token1;
+    token_t token2;
+    token_t token3;
 };
 
 

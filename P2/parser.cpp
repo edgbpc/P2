@@ -9,8 +9,11 @@
 #include <iostream>
 #include <fstream>
 #include "parser.h"
+#include "node.h"
 #include "token.h"
 #include "scanner.h"
+
+
 
 using namespace std;
 
@@ -22,8 +25,16 @@ int DEV = 1;
 parser::parser() {
 }
 
-void parser::parse() {
-    program();
+node* getNode(string label){
+    node* node = new struct node;
+    node->nodeLabel = label;
+    return node;
+}
+
+node * parser::parse() {
+    node *root;
+    
+    root = program();
    
     tkScanner();
     if (receivedToken.tokenInstance == "EOF") {
@@ -34,33 +45,39 @@ void parser::parse() {
         error("parse() - eof");
 
     }
-    return;
+    return root;
     
 }
-
-void parser::program() {
-    vars();
-    block();
-    return;
+node* parser::program() {
+    node *node = getNode("program");
+    
+    
+    node->child1 = vars();
+    node->child2 = block();
+    
+    return node;
+    
     
 }
-void parser::block() {
+node* parser::block() {
+    node *node = getNode("block");
     if (receivedToken.tokenInstance == "void"){
         vars();
         stats();
         if (receivedToken.tokenInstance == "return"){
             tkScanner();
-            return;
+            return node;
         } else {
             error("block() - return");
         }
     } else {
         error("block() - void");
     }
-    return;
+    return node;
 }
 
-void parser::vars() {
+node* parser::vars() {
+    node *node = getNode("vars");
     tkScanner();
     if (receivedToken.tokenInstance == "var") {  //predict <vars> -> var Identifier : Integer <vars>
         tkScanner();
@@ -70,7 +87,7 @@ void parser::vars() {
                 tkScanner();
                 if (receivedToken.tokenID == digitToken) {
                     vars();
-                    return;
+                    return node;
                 } else {
                     error("digit");
                 }
@@ -81,10 +98,10 @@ void parser::vars() {
             error("identifier");
         }
     } else { //predict <vars> -> empty
-        return;
+        return NULL;
         
     }
-   
+    return NULL;
 }
 void parser::expr() {
     A();

@@ -13,13 +13,12 @@
 #include <stdlib.h>
 #include "token.h"
 #include "parser.h"
-#include "tree.h"
+#include "node.h"
 
 using namespace std;
 
 ifstream fileToRead; //get the data to be processed
-tree myTree;
-
+parser myParser;
 
 int main(int argc, const char * argv[]) {
     ofstream fileToWrite;
@@ -30,7 +29,8 @@ int main(int argc, const char * argv[]) {
     string data; //variable that will be used in the tree
     string word;
     
-    parser myParser;
+ 
+ 
   
     switch (argc)
     {
@@ -68,7 +68,8 @@ int main(int argc, const char * argv[]) {
 
   if (fileToRead.good()){
  //    myTestScanner.runTestScanner(fileToRead);
-      myParser.parse();
+      node *root = new node;
+      root = myParser.parse();
             
  }
         fileToRead.close();

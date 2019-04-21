@@ -6,8 +6,8 @@
 //  Copyright © 2019 umsl. All rights reserved.
 //
 
-#ifndef scanner_h
-#define scanner_h
+#ifndef SCANNER_H
+#define SCANNER_H
 
 #include <stdio.h>
 #include "token.h"

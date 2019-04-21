@@ -6,29 +6,29 @@
 //  Copyright © 2019 umsl. All rights reserved.
 //
 
-#ifndef parser_h
-#define parser_h
+#ifndef PARSER_H
+#define PARSER_H
 
 #include <stdio.h>
 #include "token.h"
-#include "tree.h"
+#include "node.h"
 
 extern ifstream fileToRead;
-extern tree parseTree;
+
 
 
 class parser {
     
 public:
     parser();
-    void parse();
+    node* parse();
 
 
     
 private:
-    void program();
-    void block();
-    void vars();
+    node* program();
+    node* block();
+    node* vars();
     void expr();
     void A();
     void N();
