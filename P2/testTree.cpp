@@ -29,7 +29,7 @@ void printTree(node *tree, int depth) {
         
         token_t token = tree -> token1;
         if (token.tokenInstance != "") {
-            cout << "- token : " << tokenTypes[token.tokenID] << ", value: " << token.tokenInstance << " " << endl;
+            cout << "- token : " << tokenTypes[token.tokenID] << ", value: " << token.tokenInstance << " ";
         }
 
         

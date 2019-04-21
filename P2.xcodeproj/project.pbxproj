@@ -45,6 +45,12 @@
 		C378BB032265442F00CCDFFE /* parser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = parser.h; sourceTree = "<group>"; };
 		C3CFA072226D2BF4001A7248 /* testTree.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = testTree.cpp; sourceTree = "<group>"; };
 		C3CFA073226D2BF4001A7248 /* testTree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = testTree.h; sourceTree = "<group>"; };
+		C3CFA075226D3AD0001A7248 /* test1.sp19 */ = {isa = PBXFileReference; lastKnownFileType = text; path = test1.sp19; sourceTree = "<group>"; };
+		C3CFA076226D3AE5001A7248 /* test2.sp19 */ = {isa = PBXFileReference; lastKnownFileType = text; path = test2.sp19; sourceTree = "<group>"; };
+		C3CFA077226D3AF9001A7248 /* test3.sp19 */ = {isa = PBXFileReference; lastKnownFileType = text; path = test3.sp19; sourceTree = "<group>"; };
+		C3CFA078226D3B0B001A7248 /* test4.sp19 */ = {isa = PBXFileReference; lastKnownFileType = text; path = test4.sp19; sourceTree = "<group>"; };
+		C3CFA079226D3B1B001A7248 /* test5.sp19 */ = {isa = PBXFileReference; lastKnownFileType = text; path = test5.sp19; sourceTree = "<group>"; };
+		C3CFA07A226D3B3B001A7248 /* test6.sp19 */ = {isa = PBXFileReference; lastKnownFileType = text; path = test6.sp19; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +98,12 @@
 				C3657E612267E65C00696E75 /* test.sp19 */,
 				C3CFA072226D2BF4001A7248 /* testTree.cpp */,
 				C3CFA073226D2BF4001A7248 /* testTree.h */,
+				C3CFA075226D3AD0001A7248 /* test1.sp19 */,
+				C3CFA076226D3AE5001A7248 /* test2.sp19 */,
+				C3CFA077226D3AF9001A7248 /* test3.sp19 */,
+				C3CFA078226D3B0B001A7248 /* test4.sp19 */,
+				C3CFA079226D3B1B001A7248 /* test5.sp19 */,
+				C3CFA07A226D3B3B001A7248 /* test6.sp19 */,
 			);
 			path = P2;
 			sourceTree = "<group>";
