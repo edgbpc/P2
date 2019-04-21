@@ -127,8 +127,9 @@ void parser::N() {
     return;
 }
 void parser::M() {
-    tkScanner();
+  //  tkScanner();
     if (receivedToken.tokenInstance == "%") { //predict M-> % <M>
+        tkScanner();
         M();
         return;
     } else {              //predict M->R()
@@ -150,6 +151,8 @@ void parser::R() {
     } else if (receivedToken.tokenID == identifierToken || receivedToken.tokenID == digitToken) {
         tkScanner();
         return;
+    } else {
+        error("R() - (, identifier, or digit");
     }
     
 }
@@ -225,6 +228,7 @@ void parser::OUT() {
 //xcode say if as a keyword.  workaround by captalizing
 void parser::IF() {
     if (receivedToken.tokenInstance == "["){
+        tkScanner();
         expr();
         tkScanner();
         RO();
@@ -242,6 +246,7 @@ void parser::IF() {
 }
 void parser::loop() {
     if (receivedToken.tokenInstance == "["){
+        tkScanner();
         expr();
         tkScanner();
         RO();

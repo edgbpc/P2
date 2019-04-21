@@ -1,3 +1,5 @@
+var x : 1
+var x1 : 2
 void
-assign x = 5;
-return
+print [ 1 ] ;
+end
