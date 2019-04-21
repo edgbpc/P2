@@ -14,6 +14,7 @@
 #include "token.h"
 #include "parser.h"
 #include "node.h"
+#include "testTree.h"
 
 using namespace std;
 
@@ -72,7 +73,9 @@ int main(int argc, const char * argv[]) {
       tree = myParser.parse();
             
  }
-        fileToRead.close();
+    printTree(tree, 0);
+    
+    fileToRead.close();
     
     //clean up the temporary file created
     remove("temp.dat");

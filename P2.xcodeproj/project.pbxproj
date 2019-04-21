@@ -13,6 +13,7 @@
 		C378BB00226543CB00CCDFFE /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = C378BAFA226543CB00CCDFFE /* Makefile */; };
 		C378BB01226543CB00CCDFFE /* testScanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C378BAFB226543CB00CCDFFE /* testScanner.cpp */; };
 		C378BB042265442F00CCDFFE /* parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C378BB022265442F00CCDFFE /* parser.cpp */; };
+		C3CFA074226D2BF4001A7248 /* testTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3CFA072226D2BF4001A7248 /* testTree.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,6 +43,8 @@
 		C378BAFD226543CB00CCDFFE /* testScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testScanner.h; sourceTree = "<group>"; };
 		C378BB022265442F00CCDFFE /* parser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = parser.cpp; sourceTree = "<group>"; };
 		C378BB032265442F00CCDFFE /* parser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = parser.h; sourceTree = "<group>"; };
+		C3CFA072226D2BF4001A7248 /* testTree.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = testTree.cpp; sourceTree = "<group>"; };
+		C3CFA073226D2BF4001A7248 /* testTree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = testTree.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +90,8 @@
 				C378BAF8226543CB00CCDFFE /* tree.h */,
 				C378BAEE226542D200CCDFFE /* main.cpp */,
 				C3657E612267E65C00696E75 /* test.sp19 */,
+				C3CFA072226D2BF4001A7248 /* testTree.cpp */,
+				C3CFA073226D2BF4001A7248 /* testTree.h */,
 			);
 			path = P2;
 			sourceTree = "<group>";
@@ -150,6 +155,7 @@
 				C378BB01226543CB00CCDFFE /* testScanner.cpp in Sources */,
 				C378BAFE226543CB00CCDFFE /* scanner.cpp in Sources */,
 				C378BAEF226542D200CCDFFE /* main.cpp in Sources */,
+				C3CFA074226D2BF4001A7248 /* testTree.cpp in Sources */,
 				C378BB00226543CB00CCDFFE /* Makefile in Sources */,
 				C378BB042265442F00CCDFFE /* parser.cpp in Sources */,
 				C378BAFF226543CB00CCDFFE /* tree.cpp in Sources */,
