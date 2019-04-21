@@ -86,16 +86,13 @@ void parser::vars() {
    
 }
 void parser::expr() {
-    cout << "in expr()\n";
     A();
     if (receivedToken.tokenInstance == "+" ){  //predict A-> A + <expr>
         tkScanner();
-        cout << "+";
         expr();
         return;
     } else if (receivedToken.tokenInstance == "-") { //predict A-> A - <expr>
         tkScanner();
-        cout << "-";
         expr();
         return;
     } else {
@@ -108,6 +105,7 @@ void parser::A() {
     N();
     if (receivedToken.tokenInstance == "/") {
         A();
+        tkScanner();
         return;
     } else {
         return;
@@ -120,6 +118,7 @@ void parser::N() {
     M();
     if (receivedToken.tokenInstance == "*") {
         N();
+        tkScanner();
         return;
     } else {
         return;
@@ -127,10 +126,9 @@ void parser::N() {
     return;
 }
 void parser::M() {
-  //  tkScanner();
     if (receivedToken.tokenInstance == "%") { //predict M-> % <M>
-        tkScanner();
         M();
+        tkScanner();
         return;
     } else {              //predict M->R()
         R();
@@ -148,7 +146,11 @@ void parser::R() {
         if (receivedToken.tokenInstance != ")") {
             error("R() - )");
         }
+        tkScanner();
     } else if (receivedToken.tokenID == identifierToken || receivedToken.tokenID == digitToken) {
+        tkScanner();
+        return;
+    } else if (receivedToken.tokenInstance == "*" || receivedToken.tokenInstance == "/" || receivedToken.tokenInstance == "%"){
         tkScanner();
         return;
     } else {
@@ -230,7 +232,7 @@ void parser::IF() {
     if (receivedToken.tokenInstance == "["){
         tkScanner();
         expr();
-        tkScanner();
+    //    tkScanner();
         RO();
         expr();
         if (receivedToken.tokenInstance != "]"){
