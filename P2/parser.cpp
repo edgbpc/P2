@@ -293,15 +293,15 @@ node* parser::loop() {
     node* node = getNode("loop");
     if (receivedToken.tokenInstance == "["){
         tkScanner();
-        expr();
+        node->child1 = expr();
   //      tkScanner();
-        RO();
-        expr();
+        node->child2 = RO();
+        node->child3 = expr();
         if (receivedToken.tokenInstance != "]"){
             error("IF() - ]");
         }
         tkScanner();
-        stat();
+        node->child4 = stat();
     } else {
         error("IF() - [");
     }
