@@ -19,6 +19,7 @@ using namespace std;
 
 token_t receivedToken;
 
+
 int DEV = 1;
 
 
@@ -31,10 +32,11 @@ node* getNode(string label){
     return node;
 }
 
+node *tree = getNode("root");
+
 node * parser::parse() {
-    node *root;
     
-    root = program();
+    tree = program();
    
     tkScanner();
     if (receivedToken.tokenInstance == "EOF") {
@@ -45,7 +47,7 @@ node * parser::parse() {
         error("parse() - eof");
 
     }
-    return root;
+    return tree;
     
 }
 node* parser::program() {

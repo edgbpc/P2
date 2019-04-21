@@ -14,6 +14,7 @@
 #include "node.h"
 
 extern ifstream fileToRead;
+extern node * tree;
 
 
 

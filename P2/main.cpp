@@ -68,8 +68,8 @@ int main(int argc, const char * argv[]) {
 
   if (fileToRead.good()){
  //    myTestScanner.runTestScanner(fileToRead);
-      node *root = new node;
-      root = myParser.parse();
+     // node *root = new node;
+      tree = myParser.parse();
             
  }
         fileToRead.close();
