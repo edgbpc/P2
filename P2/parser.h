@@ -11,8 +11,10 @@
 
 #include <stdio.h>
 #include "token.h"
+#include "tree.h"
 
-extern ifstream fileToRead; 
+extern ifstream fileToRead;
+extern tree parseTree;
 
 
 class parser {

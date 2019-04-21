@@ -41,7 +41,6 @@ void parser::parse() {
 void parser::program() {
     vars();
     block();
-    
     return;
     
 }
@@ -50,6 +49,7 @@ void parser::block() {
         vars();
         stats();
         if (receivedToken.tokenInstance == "return"){
+            tkScanner();
             return;
         } else {
             error("block() - return");
@@ -57,6 +57,7 @@ void parser::block() {
     } else {
         error("block() - void");
     }
+    return;
 }
 
 void parser::vars() {
@@ -127,8 +128,8 @@ void parser::N() {
 }
 void parser::M() {
     if (receivedToken.tokenInstance == "%") { //predict M-> % <M>
+       tkScanner();
         M();
-        tkScanner();
         return;
     } else {              //predict M->R()
         R();
@@ -172,12 +173,12 @@ void parser::mStat() {
     tkScanner();
     if (receivedToken.tokenInstance == "scan" || receivedToken.tokenInstance == "print" || receivedToken.tokenInstance == "void" || receivedToken.tokenInstance == "cond" || receivedToken.tokenInstance == "iter") {
         stat();
-        if (receivedToken.tokenInstance != ";") {
-            error("mStat() - ;");
+        if (receivedToken.tokenInstance == ";") {
+             mStat();
+            return;
+        } else {
+            error("mStat - ;");
         }
-        mStat();
-        return;
-        
     } else {
         return;
     }
@@ -192,9 +193,9 @@ void parser::stat() {
         OUT();
         return;
     } else if (receivedToken.tokenInstance == "void") {
-    //    tkScanner();
+      //  tkScanner();
         block();
-        tkScanner();
+      //  tkScanner();
         return;
     } else if (receivedToken.tokenInstance == "cond") {
         tkScanner();
@@ -281,7 +282,7 @@ void parser::RO() {
     // <   < >
     if (receivedToken.tokenInstance == "<"){
         tkScanner();
-        if (receivedToken.tokenInstance == " >"){
+        if (receivedToken.tokenInstance == ">"){
             tkScanner();
             return;
         }

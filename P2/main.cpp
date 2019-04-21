@@ -13,10 +13,12 @@
 #include <stdlib.h>
 #include "token.h"
 #include "parser.h"
+#include "tree.h"
 
 using namespace std;
 
 ifstream fileToRead; //get the data to be processed
+tree myTree;
 
 
 int main(int argc, const char * argv[]) {
