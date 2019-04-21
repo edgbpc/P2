@@ -30,21 +30,21 @@ private:
     node* program();
     node* block();
     node* vars();
-    void expr();
-    void A();
-    void N();
-    void M();
-    void R();
-    void stats();
-    void mStat();
-    void stat();
-    void IN();      //xcode say in as a keyword.  workaround by captalizing
-    void OUT();     //xcode say out as a keyword.  workaround by captalizing
-    void IF();      //xcode say if as a keyword.  workaround by captalizing
-    void loop();
-    void assign();
-    void RO();
-    void parseTokens(token_t token);
+    node* expr();
+    node* A();
+    node* N();
+    node* M();
+    node* R();
+    node* stats();
+    node* mStat();
+    node* stat();
+    node* IN();      //xcode say in as a keyword.  workaround by captalizing
+    node* OUT();     //xcode say out as a keyword.  workaround by captalizing
+    node* IF();      //xcode say if as a keyword.  workaround by captalizing
+    node* loop();
+    node* assign();
+    node* RO();
+ //   void parseTokens(token_t token);
     void tkScanner();
     void Run();
     void error(string expected);

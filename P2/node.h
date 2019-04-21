@@ -24,8 +24,8 @@ struct node {
     string nodeLabel;
     node *child1, *child2;
     token_t token1;
-    token_t token2;
-    token_t token3;
+    string token2;
+    string token3;
 };
 
 
