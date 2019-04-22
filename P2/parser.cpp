@@ -23,7 +23,7 @@ token_t receivedToken;
 int DEV = 0;
 
 
-parser::parser() {
+Parser::Parser() {
 }
 
 node* getNode(string label){
@@ -34,7 +34,7 @@ node* getNode(string label){
 
 node *tree = getNode("root");
 
-node * parser::parse() {
+node * Parser::parser() {
     
     tree = program();
    
@@ -50,7 +50,7 @@ node * parser::parse() {
     return tree;
     
 }
-node* parser::program() {
+node* Parser::program() {
     node *node = getNode("program");
     
     node->child1 = vars();
@@ -60,7 +60,7 @@ node* parser::program() {
     
     
 }
-node* parser::block() {
+node* Parser::block() {
     node *node = getNode("block");
     if (receivedToken.tokenInstance == "void"){
         node->child1 = vars();
@@ -77,7 +77,7 @@ node* parser::block() {
     return node;
 }
 
-node* parser::vars() {
+node* Parser::vars() {
     node *node = getNode("vars");
     tkScanner();
     if (receivedToken.tokenInstance == "var") {  //predict <vars> -> var Identifier : Integer <vars>
@@ -106,7 +106,7 @@ node* parser::vars() {
     }
     return node;
 }
-node*  parser::expr() {
+node*  Parser::expr() {
     node* node = getNode("expr");
     node->child1 = A();
     if (receivedToken.tokenInstance == "+" ){  //predict A-> A + <expr>
@@ -124,7 +124,7 @@ node*  parser::expr() {
     }
 }
 
-node*  parser::A() {
+node*  Parser::A() {
     node* node = getNode("A");
     node->child1 = N();
     if (receivedToken.tokenInstance == "/") {
@@ -138,7 +138,7 @@ node*  parser::A() {
     
     
 }
-node*  parser::N() {
+node*  Parser::N() {
     node* node = getNode("N");
     node->child1 = M();
     if (receivedToken.tokenInstance == "*") {
@@ -150,7 +150,7 @@ node*  parser::N() {
     }
     return node;
 }
-node*  parser::M() {
+node*  Parser::M() {
     node* node = getNode("M");
     if (receivedToken.tokenInstance == "%") { //predict M-> % <M>
        tkScanner();
@@ -164,7 +164,7 @@ node*  parser::M() {
     
     
 }
-node*  parser::R() {
+node*  Parser::R() {
     node* node = getNode("R");
     if (receivedToken.tokenInstance == "(" ) {   // predict R-> ( <expr> )
         tkScanner();
@@ -187,7 +187,7 @@ node*  parser::R() {
     }
     return node;
 }
-node*  parser::stats() {
+node*  Parser::stats() {
     node* node = getNode("stats");
     node->child1 = stat();
     if (receivedToken.tokenInstance != ";"){
@@ -198,7 +198,7 @@ node*  parser::stats() {
     
     
 }
-node*  parser::mStat() {
+node*  Parser::mStat() {
     node* node = getNode("mStats");
     tkScanner();
     if (receivedToken.tokenInstance == "scan" || receivedToken.tokenInstance == "print" || receivedToken.tokenInstance == "void" || receivedToken.tokenInstance == "cond" || receivedToken.tokenInstance == "iter") {
@@ -214,7 +214,7 @@ node*  parser::mStat() {
     }
     return node;
 }
-node*  parser::stat() {
+node*  Parser::stat() {
     node* node = getNode("stat");
     if (receivedToken.tokenInstance == "scan") {
         tkScanner();
@@ -249,7 +249,7 @@ node*  parser::stat() {
 }
 
 //xcode say in as a keyword.  workaround by captalizing
-node*  parser::IN() {
+node*  Parser::IN() {
     node* node = getNode("In");
     if (receivedToken.tokenID == identifierToken) {
         node->token1 = receivedToken;
@@ -262,7 +262,7 @@ node*  parser::IN() {
 }
 
 //xcode say out as a keyword.  workaround by captalizing
-node* parser::OUT() {
+node* Parser::OUT() {
     node* node = getNode("Out");
     node->child1 = expr();
     
@@ -270,7 +270,7 @@ node* parser::OUT() {
     
 }
 //xcode say if as a keyword.  workaround by captalizing
-node* parser::IF() {
+node* Parser::IF() {
     node* node = getNode("If");
     if (receivedToken.tokenInstance == "["){
         tkScanner();
@@ -289,7 +289,7 @@ node* parser::IF() {
     
     return node;
 }
-node* parser::loop() {
+node* Parser::loop() {
     node* node = getNode("loop");
     if (receivedToken.tokenInstance == "["){
         tkScanner();
@@ -307,7 +307,7 @@ node* parser::loop() {
     }
     return node;
 }
-node* parser::assign() {
+node* Parser::assign() {
     node* node = getNode("assign");
     if (receivedToken.tokenID == identifierToken){
         tkScanner();
@@ -322,7 +322,7 @@ node* parser::assign() {
     }
     return node;
 }
-node* parser::RO() {
+node* Parser::RO() {
     node* node = getNode("RO");
     // <   < >
     if (receivedToken.tokenInstance == "<"){
@@ -360,7 +360,7 @@ node* parser::RO() {
 
 
 
-void parser::Run(){
+void Parser::Run(){
     
     // do while isTokenComplete = false
     // get a character
@@ -388,18 +388,18 @@ void parser::Run(){
     
 }
 
-void parser::DEVMode() {
+void Parser::DEVMode() {
     if (DEV) {
         cout << "Dev - Working token: " << receivedToken.tokenInstance << "\nDev - Type: " << tokenTypes[receivedToken.tokenID] << endl;
     }
 }
 
-void parser::error(string expected) {
+void Parser::error(string expected) {
     cout << "Error: On line number: " << receivedToken.lineNumber << ". Expected '" << expected <<  "' Received: '" << receivedToken.tokenInstance  << "'.  Exiting." << endl;
     exit(EXIT_SUCCESS);
 }
 
-void parser::tkScanner(){
+void Parser::tkScanner(){
     Run();
     
 }

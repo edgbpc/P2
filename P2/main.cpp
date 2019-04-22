@@ -19,7 +19,7 @@
 using namespace std;
 
 ifstream fileToRead; //get the data to be processed
-parser myParser;
+Parser myParser;
 
 int main(int argc, const char * argv[]) {
     ofstream fileToWrite;
@@ -70,7 +70,7 @@ int main(int argc, const char * argv[]) {
   if (fileToRead.good()){
  //    myTestScanner.runTestScanner(fileToRead);
      // node *root = new node;
-      tree = myParser.parse();
+      tree = myParser.parser();
             
  }
     printTree(tree, 0);

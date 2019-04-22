@@ -51,6 +51,7 @@
 		C3CFA078226D3B0B001A7248 /* test4.sp19 */ = {isa = PBXFileReference; lastKnownFileType = text; path = test4.sp19; sourceTree = "<group>"; };
 		C3CFA079226D3B1B001A7248 /* test5.sp19 */ = {isa = PBXFileReference; lastKnownFileType = text; path = test5.sp19; sourceTree = "<group>"; };
 		C3CFA07A226D3B3B001A7248 /* test6.sp19 */ = {isa = PBXFileReference; lastKnownFileType = text; path = test6.sp19; sourceTree = "<group>"; };
+		C3CFA07B226D4698001A7248 /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +105,7 @@
 				C3CFA078226D3B0B001A7248 /* test4.sp19 */,
 				C3CFA079226D3B1B001A7248 /* test5.sp19 */,
 				C3CFA07A226D3B3B001A7248 /* test6.sp19 */,
+				C3CFA07B226D4698001A7248 /* README.txt */,
 			);
 			path = P2;
 			sourceTree = "<group>";

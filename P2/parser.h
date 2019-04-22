@@ -18,11 +18,11 @@ extern node * tree;
 
 
 
-class parser {
+class Parser {
     
 public:
-    parser();
-    node* parse();
+    Parser();
+    node* parser();
 
 
     
