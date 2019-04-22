@@ -19,8 +19,8 @@ using namespace std;
 
 token_t receivedToken;
 
-
-int DEV = 1;
+//flag is used to trigger a visibility mode for development purposes
+int DEV = 0;
 
 
 parser::parser() {
@@ -44,7 +44,7 @@ node * parser::parse() {
     }
     
     else{
-        error("parse() - eof");
+        error("EOF");
 
     }
     return tree;
@@ -69,10 +69,10 @@ node* parser::block() {
             tkScanner();
             return node;
         } else {
-            error("block() - return");
+            error("return");
         }
     } else {
-        error("block() - void");
+        error("void");
     }
     return node;
 }
@@ -171,7 +171,7 @@ node*  parser::R() {
         node->child1 = expr();
         tkScanner();
         if (receivedToken.tokenInstance != ")") {
-            error("R() - )");
+            error(")");
         }
        tkScanner();
     } else if (receivedToken.tokenID == identifierToken || receivedToken.tokenID == digitToken) {
@@ -183,7 +183,7 @@ node*  parser::R() {
         tkScanner();
         return node;
     } else {
-        error("R() - (, identifier, or digit");
+        error("(, identifier, or digit");
     }
     return node;
 }
@@ -191,7 +191,7 @@ node*  parser::stats() {
     node* node = getNode("stats");
     node->child1 = stat();
     if (receivedToken.tokenInstance != ";"){
-        error("stats() - ;");
+        error(";");
     }
     node->child2 = mStat();
     return node;
@@ -207,7 +207,7 @@ node*  parser::mStat() {
             node->child2 = mStat();
             return node;
         } else {
-            error("mStat - ;");
+            error(";");
         }
     } else {
         return node;
@@ -242,7 +242,7 @@ node*  parser::stat() {
         node->child1 = assign();
         return node;
     } else {
-        error("stat() - scan, print, void, cond, or iter");
+        error("scan, print, void, cond, or iter");
     }
     
     return node;
@@ -255,7 +255,7 @@ node*  parser::IN() {
         node->token1 = receivedToken;
         tkScanner();
     } else {
-        error("IN() - identifier");
+        error("identifier");
     }
     
     return node;
@@ -279,12 +279,12 @@ node* parser::IF() {
         node->child2 = RO();
         node->child3 = expr();
         if (receivedToken.tokenInstance != "]"){
-            error("IF() - ]");
+            error("]");
         }
         tkScanner();
         node->child4 = stat();
     } else {
-        error("IF() - [");
+        error("[");
     }
     
     return node;
@@ -298,12 +298,12 @@ node* parser::loop() {
         node->child2 = RO();
         node->child3 = expr();
         if (receivedToken.tokenInstance != "]"){
-            error("IF() - ]");
+            error("]");
         }
         tkScanner();
         node->child4 = stat();
     } else {
-        error("IF() - [");
+        error("[");
     }
     return node;
 }
@@ -315,10 +315,10 @@ node* parser::assign() {
             node->child1 = expr();
             return node;
         } else {
-            error("assign() - =");
+            error("=");
         }
     } else {
-        error("assign() - identifer");
+        error("identifer");
     }
     return node;
 }
@@ -353,7 +353,7 @@ node* parser::RO() {
         tkScanner();
         return node;
     } else {
-        error("RO() - <, => , > , => , < >, or =");
+        error("<, => , > , => , < >, or =");
     }
     return node;
 }

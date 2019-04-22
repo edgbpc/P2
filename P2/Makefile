@@ -11,7 +11,7 @@ CXXFLAGS = -std=c++11
 
 all:	$(TARGET1)
 
-scanner:	$(OBJS1) $(OBJS2) $(OBJS3)
+frontEnd:	$(OBJS1) $(OBJS2) $(OBJS3)
 		$(CC) $(CFLAGS) $(CXXFLAGS) $(OBJS1) $(OBJS2) $(OBJS3) -o $@
 
 
