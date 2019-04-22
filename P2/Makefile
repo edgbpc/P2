@@ -20,5 +20,5 @@ frontEnd:	$(OBJS1) $(OBJS2) $(OBJS3) $(OBJS4)
 		$(CC) $(CFLAGS) -c $<
 
 .PHONY: clean
-	clean:
-		/bin/rm -f *.o *.dat  *~ $(TARGET1)
+clean:
+	/bin/rm -f *.o *.dat  *~ $(TARGET1)
