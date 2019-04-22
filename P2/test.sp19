@@ -1,3 +1,6 @@
+var x : 1
+var x1 : 2
 void
+var x : 1
 print 1 ;
-return
+

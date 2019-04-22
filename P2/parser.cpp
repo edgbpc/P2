@@ -22,7 +22,6 @@ token_t receivedToken;
 //flag is used to trigger a visibility mode for development purposes
 int DEV = 0;
 
-
 Parser::Parser() {
 }
 
@@ -38,7 +37,8 @@ node * Parser::parser() {
     
     tree = program();
    
-    tkScanner();
+ //   tkScanner();
+    
     if (receivedToken.tokenInstance == "EOF") {
         cout << "Parsing Complete.  No Errors" << endl;;
     }
@@ -74,6 +74,7 @@ node* Parser::block() {
     } else {
         error("void");
     }
+    tkScanner();
     return node;
 }
 
