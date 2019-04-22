@@ -129,6 +129,7 @@ node*  Parser::A() {
     node->child1 = N();
     if (receivedToken.tokenInstance == "/") {
         node->child1 = A();
+        node->token1 = receivedToken;
         tkScanner();
         return node;
     } else {
@@ -143,6 +144,7 @@ node*  Parser::N() {
     node->child1 = M();
     if (receivedToken.tokenInstance == "*") {
         node->child1 = N();
+        node->token1 = receivedToken;
         tkScanner();
         return node;
     } else {
@@ -153,7 +155,8 @@ node*  Parser::N() {
 node*  Parser::M() {
     node* node = getNode("M");
     if (receivedToken.tokenInstance == "%") { //predict M-> % <M>
-       tkScanner();
+        node->token1 = receivedToken;
+        tkScanner();
         node->child1 = M();
         return node;
     } else {              //predict M->R()
